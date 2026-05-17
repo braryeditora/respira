@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Respira — Saúde Pulmonar & Imunológica</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --teal-900: #04342C;
+  --teal-800: #085041;
+  --teal-700: #0F6E56;
+  --teal-500: #1D9E75;
+  --teal-300: #5DCAA5;
+  --teal-100: #9FE1CB;
+  --teal-50:  #E1F5EE;
+  --amber-600: #854F0B;
+  --amber-400: #BA7517;
+  --amber-200: #EF9F27;
+  --amber-50:  #FAEEDA;
+  --gray-900: #141414;
+  --gray-700: #3a3a3a;
+  --gray-500: #6b7280;
+  --gray-300: #d1d5db;
+  --gray-100: #f0f0ef;
+  --gray-50:  #fafaf9;
+  --white: #ffffff;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  background: var(--white);
+  color: var(--gray-900);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── TIPOGRAFIA ─── */
+h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 400; line-height: 1.12; }
+p { line-height: 1.75; }
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.4rem 5vw;
+  background: rgba(255,255,255,0.94);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  transition: padding 0.3s;
+}
+.nav-logo { display: flex; align-items: baseline; gap: 0.5rem; text-decoration: none; }
+.nav-logo-main {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.65rem; font-weight: 600; letter-spacing: -0.5px;
+  color: var(--teal-700);
+}
+.nav-logo-sub {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem; color: var(--teal-400, #3db88a); letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--teal-500);
+}
+.nav-links { display: flex; gap: 2.5rem; align-items: center; }
+.nav-links a {
+  text-decoration: none; color: var(--gray-700);
+  font-size: 0.875rem; font-weight: 400; letter-spacing: 0.2px;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--teal-700); }
+.nav-cta {
+  background: var(--teal-700); color: var(--white) !important;
+  padding: 0.6rem 1.5rem; border-radius: 100px;
+  font-weight: 500 !important; transition: background 0.2s, transform 0.2s !important;
+}
+.nav-cta:hover { background: var(--teal-800) !important; transform: translateY(-1px) !important; }
+.nav-mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 8rem 5vw 5rem;
+  position: relative; overflow: hidden;
+}
+.hero-bg-circle {
+  position: absolute; right: -8vw; top: 50%; transform: translateY(-50%);
+  width: min(680px, 60vw); height: min(680px, 60vw); border-radius: 50%;
+  background: var(--teal-50); z-index: 0; pointer-events: none;
+}
+.hero-bg-dot {
+  position: absolute; left: 38%; bottom: 8%;
+  width: 220px; height: 220px; border-radius: 50%;
+  background: var(--amber-50); z-index: 0; pointer-events: none;
+}
+.hero-inner {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5vw; align-items: center;
+  width: 100%; max-width: 1200px; margin: 0 auto;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  background: var(--teal-50); color: var(--teal-700);
+  padding: 0.35rem 1rem; border-radius: 100px;
+  font-size: 0.75rem; font-weight: 500; letter-spacing: 1px;
+  text-transform: uppercase; margin-bottom: 1.8rem;
+}
+.hero-eyebrow-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--teal-500); animation: pulse-dot 2s infinite;
+}
+@keyframes pulse-dot {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.4); }
+}
+h1.hero-title {
+  font-size: clamp(2.6rem, 4.5vw, 4rem);
+  font-weight: 300; color: var(--gray-900); margin-bottom: 1.6rem;
+}
+h1.hero-title em { font-style: italic; color: var(--teal-700); }
+.hero-sub {
+  font-size: 1.05rem; color: var(--gray-500); font-weight: 300;
+  line-height: 1.8; margin-bottom: 2.5rem; max-width: 420px;
+}
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+.btn-primary {
+  background: var(--teal-700); color: var(--white);
+  padding: 0.9rem 2.2rem; border-radius: 100px; border: none;
+  font-family: 'DM Sans'; font-size: 0.95rem; font-weight: 500;
+  cursor: pointer; transition: all 0.25s; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  letter-spacing: 0.2px;
+}
+.btn-primary:hover { background: var(--teal-800); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(15,110,86,0.2); }
+.btn-ghost {
+  color: var(--gray-700); background: transparent; border: none;
+  padding: 0.9rem 1.5rem; border-radius: 100px;
+  font-family: 'DM Sans'; font-size: 0.95rem; font-weight: 400;
+  cursor: pointer; transition: all 0.2s; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 0.4rem;
+}
+.btn-ghost:hover { color: var(--teal-700); background: var(--teal-50); }
+.hero-trust {
+  display: flex; align-items: center; gap: 1rem;
+  font-size: 0.82rem; color: var(--gray-500);
+}
+.hero-trust-avatars { display: flex; }
+.hero-trust-avatars span {
+  width: 30px; height: 30px; border-radius: 50%;
+  border: 2px solid var(--white);
+  background: var(--teal-300); display: flex; align-items: center;
+  justify-content: center; font-size: 0.6rem; font-weight: 600;
+  color: var(--teal-900); margin-left: -8px;
+}
+.hero-trust-avatars span:first-child { margin-left: 0; }
+
+/* ─── HERO CARD ─── */
+.hero-card {
+  background: var(--white); border-radius: 24px;
+  border: 1px solid rgba(0,0,0,0.07);
+  box-shadow: 0 24px 64px rgba(15,110,86,0.08), 0 4px 16px rgba(0,0,0,0.04);
+  padding: 2rem; position: relative;
+}
+.hero-card-tag {
+  position: absolute; top: -14px; left: 24px;
+  background: var(--white); border: 1px solid var(--gray-100);
+  border-radius: 100px; padding: 0.35rem 0.9rem;
+  font-size: 0.75rem; color: var(--gray-500);
+  display: flex; align-items: center; gap: 0.4rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.tag-live-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: #10b981;
+  animation: pulse-dot 1.5s infinite;
+}
+.dr-badge { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 1.6rem; }
+.dr-avatar {
+  width: 52px; height: 52px; border-radius: 50%; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--teal-300), var(--teal-500));
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond'; font-size: 1.2rem;
+  font-weight: 600; color: var(--teal-900);
+}
+.dr-info h3 { font-family: 'DM Sans'; font-size: 0.95rem; font-weight: 500; margin-bottom: 0.1rem; }
+.dr-info p { font-size: 0.78rem; color: var(--teal-600, #0F6E56); font-weight: 400; }
+.dr-info span { font-size: 0.72rem; color: var(--gray-500); }
+.card-stats {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 0.6rem; margin-bottom: 1.4rem;
+}
+.stat-box { background: var(--gray-50); border-radius: 12px; padding: 0.85rem 0.6rem; text-align: center; }
+.stat-box .n {
+  font-family: 'Cormorant Garamond'; font-size: 1.5rem;
+  font-weight: 600; color: var(--teal-700); line-height: 1;
+}
+.stat-box .l { font-size: 0.68rem; color: var(--gray-500); margin-top: 0.2rem; }
+.chat-wrap { background: var(--gray-50); border-radius: 16px; padding: 1rem; }
+.chat-msg { display: flex; gap: 0.5rem; margin-bottom: 0.65rem; align-items: flex-end; }
+.chat-msg:last-child { margin-bottom: 0; }
+.chat-msg.user { flex-direction: row-reverse; }
+.bubble {
+  padding: 0.55rem 0.9rem; border-radius: 14px;
+  font-size: 0.8rem; line-height: 1.5; max-width: 82%;
+}
+.chat-msg.user .bubble { background: var(--teal-700); color: var(--white); border-bottom-right-radius: 4px; }
+.chat-msg.bot .bubble { background: var(--white); color: var(--gray-700); border: 1px solid var(--gray-300); border-bottom-left-radius: 4px; }
+.bot-av {
+  width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0;
+  background: var(--teal-50); display: flex; align-items: center;
+  justify-content: center; font-family: 'Cormorant Garamond'; font-size: 0.8rem;
+  color: var(--teal-700); font-weight: 600;
+}
+.typing { display: flex; gap: 3px; align-items: center; padding: 0.6rem 0.9rem; }
+.typing span { width: 5px; height: 5px; border-radius: 50%; background: var(--gray-300); animation: blink 1.3s infinite; }
+.typing span:nth-child(2) { animation-delay: 0.2s; }
+.typing span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes blink { 0%,80%,100%{opacity:.3;transform:scale(.8)} 40%{opacity:1;transform:scale(1.1)} }
+
+/* ─── DOR / ACOLHIMENTO ─── */
+.dor-section {
+  padding: 7rem 5vw;
+  background: var(--gray-900); color: var(--white);
+  text-align: center;
+}
+.dor-inner { max-width: 720px; margin: 0 auto; }
+.dor-section .section-label { color: var(--teal-300); margin-bottom: 1.2rem; }
+.dor-title {
+  font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300;
+  line-height: 1.15; margin-bottom: 1.8rem;
+}
+.dor-title em { font-style: italic; color: var(--teal-300); }
+.dor-sub { font-size: 1.05rem; color: rgba(255,255,255,0.6); line-height: 1.8; margin-bottom: 3rem; }
+.dor-cards {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; text-align: left;
+}
+.dor-card {
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px; padding: 1.5rem;
+}
+.dor-card-icon { margin-bottom: 1rem; }
+.dor-card h4 { font-family: 'DM Sans'; font-size: 0.92rem; font-weight: 500; margin-bottom: 0.4rem; }
+.dor-card p { font-size: 0.82rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
+
+/* ─── SECTION BASE ─── */
+.section-label {
+  font-family: 'DM Mono'; font-size: 0.7rem;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--teal-500); margin-bottom: 0.7rem; display: block;
+}
+.section-title { font-size: clamp(1.9rem, 3.5vw, 3rem); font-weight: 300; margin-bottom: 1rem; }
+.section-sub { font-size: 0.98rem; color: var(--gray-500); line-height: 1.8; max-width: 500px; }
+.section-header { margin-bottom: 4rem; }
+
+/* ─── ESPECIALISTA ─── */
+.especialista-section {
+  padding: 7rem 5vw;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6vw; align-items: center;
+  max-width: 1200px; margin: 0 auto;
+}
+.esp-left .section-sub { max-width: 100%; margin-bottom: 2rem; }
+.esp-quote {
+  background: var(--teal-50); border-left: 3px solid var(--teal-300);
+  border-radius: 0 12px 12px 0; padding: 1.2rem 1.5rem;
+  font-family: 'Cormorant Garamond'; font-size: 1.15rem;
+  font-style: italic; color: var(--teal-800); line-height: 1.6;
+}
+.esp-card {
+  background: var(--white); border-radius: 24px;
+  border: 1px solid var(--gray-100);
+  box-shadow: 0 12px 48px rgba(15,110,86,0.07); padding: 2.5rem;
+  text-align: center;
+}
+.esp-avatar {
+  width: 88px; height: 88px; border-radius: 50%; margin: 0 auto 1.4rem;
+  background: linear-gradient(135deg, var(--teal-300), var(--teal-500));
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond'; font-size: 2rem; font-weight: 400;
+  color: var(--teal-900);
+}
+.esp-card h3 { font-size: 1.25rem; font-weight: 400; margin-bottom: 0.3rem; }
+.esp-crm {
+  font-family: 'DM Mono'; font-size: 0.68rem;
+  color: var(--teal-500); letter-spacing: 1.5px; margin-bottom: 1.4rem;
+}
+.esp-stars { color: var(--amber-200); font-size: 0.9rem; margin-bottom: 0.3rem; }
+.esp-review { font-size: 0.8rem; color: var(--gray-500); margin-bottom: 1.5rem; }
+.esp-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; justify-content: center; margin-bottom: 1.5rem; }
+.esp-tag {
+  background: var(--teal-50); color: var(--teal-700);
+  font-size: 0.75rem; padding: 0.28rem 0.7rem; border-radius: 100px;
+}
+.esp-awards {
+  padding-top: 1.2rem; border-top: 1px solid var(--gray-100);
+  display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;
+}
+.esp-award {
+  font-size: 0.72rem; color: var(--gray-500);
+  background: var(--gray-50); padding: 0.25rem 0.6rem; border-radius: 6px;
+}
+
+/* ─── COMO FUNCIONA ─── */
+.como-section { padding: 7rem 0; background: var(--gray-50); }
+.como-header { padding: 0 5vw; margin-bottom: 3.5rem; }
+.steps-desktop {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 1.2rem;
+  padding: 0 5vw;
+}
+.steps-mobile { display: none; }
+.step-card {
+  background: var(--white); border-radius: 20px;
+  padding: 2rem 1.5rem; position: relative;
+  border: 1px solid rgba(0,0,0,0.06);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.step-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(15,110,86,0.09); }
+.step-num {
+  font-family: 'Cormorant Garamond'; font-size: 2.8rem;
+  font-weight: 300; color: var(--teal-100); line-height: 1; margin-bottom: 1rem;
+}
+.step-icon { margin-bottom: 1rem; }
+.step-card h3 {
+  font-family: 'DM Sans'; font-size: 1rem; font-weight: 500;
+  margin-bottom: 0.5rem; color: var(--gray-900);
+}
+.step-card p { font-size: 0.85rem; color: var(--gray-500); line-height: 1.65; }
+
+/* ─── SVG ICONS ─── */
+.ico { display: block; width: 40px; height: 40px; }
+.ico-wrap {
+  width: 48px; height: 48px; border-radius: 14px;
+  background: var(--teal-50); display: flex; align-items: center;
+  justify-content: center; margin-bottom: 1rem;
+}
+
+/* ─── BENEFÍCIOS ─── */
+.beneficios-section {
+  padding: 7rem 5vw;
+  max-width: 1200px; margin: 0 auto;
+}
+.beneficios-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem;
+}
+.beneficio-item {
+  display: flex; gap: 1.2rem; align-items: flex-start;
+  padding: 1.5rem; border-radius: 16px;
+  border: 1px solid var(--gray-100); background: var(--white);
+  transition: border-color 0.2s;
+}
+.beneficio-item:hover { border-color: var(--teal-100); }
+.beneficio-icon {
+  width: 40px; height: 40px; border-radius: 12px;
+  background: var(--teal-50); display: flex; align-items: center;
+  justify-content: center; flex-shrink: 0;
+}
+.beneficio-item h4 { font-family: 'DM Sans'; font-size: 0.92rem; font-weight: 500; margin-bottom: 0.3rem; }
+.beneficio-item p { font-size: 0.83rem; color: var(--gray-500); line-height: 1.6; }
+
+/* ─── CTA CENTRAL ─── */
+.cta-section {
+  padding: 6rem 5vw; text-align: center;
+  background: var(--teal-700); color: var(--white);
+}
+.cta-section .section-label { color: var(--teal-100); }
+.cta-title {
+  font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; margin-bottom: 1rem;
+}
+.cta-title em { font-style: italic; color: var(--teal-100); }
+.cta-sub { font-size: 1rem; color: rgba(255,255,255,0.7); margin-bottom: 2.5rem; }
+.btn-white {
+  background: var(--white); color: var(--teal-700);
+  padding: 1rem 2.5rem; border-radius: 100px; border: none;
+  font-family: 'DM Sans'; font-size: 1rem; font-weight: 500;
+  cursor: pointer; transition: all 0.25s; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.btn-white:hover { background: var(--teal-50); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,0.15); }
+.cta-note { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 1.2rem; }
+
+/* ─── PLANOS ─── */
+.planos-section { padding: 7rem 5vw; }
+.planos-section .section-header { text-align: center; margin-left: auto; margin-right: auto; }
+.planos-section .section-sub { margin: 0 auto; text-align: center; }
+.planos-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1.2rem; max-width: 980px; margin: 0 auto;
+}
+.plano-card {
+  border-radius: 22px; padding: 2.2rem 1.8rem;
+  border: 1.5px solid var(--gray-100);
+  transition: transform 0.25s, box-shadow 0.25s;
+  background: var(--white);
+}
+.plano-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.07); }
+.plano-card.featured {
+  background: var(--teal-700); border-color: var(--teal-700);
+  color: var(--white);
+}
+.plano-badge {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 1.2px;
+  text-transform: uppercase; padding: 0.28rem 0.7rem; border-radius: 100px;
+  display: inline-block; margin-bottom: 1.4rem;
+}
+.plano-card:not(.featured) .plano-badge { background: var(--teal-50); color: var(--teal-700); }
+.plano-card.featured .plano-badge { background: rgba(255,255,255,0.18); color: var(--white); }
+.plano-preco { margin-bottom: 1.2rem; }
+.plano-moeda { font-family: 'Cormorant Garamond'; font-size: 1.3rem; vertical-align: top; margin-top: 0.4rem; display: inline-block; }
+.plano-valor { font-family: 'Cormorant Garamond'; font-size: 2.8rem; font-weight: 400; line-height: 1; }
+.plano-per { font-size: 0.78rem; font-weight: 300; opacity: 0.65; margin-left: 0.2rem; }
+.plano-card:not(.featured) .plano-moeda,
+.plano-card:not(.featured) .plano-valor { color: var(--teal-700); }
+.plano-nome { font-family: 'DM Sans'; font-size: 1.1rem; font-weight: 500; margin-bottom: 0.3rem; }
+.plano-desc { font-size: 0.83rem; opacity: 0.65; margin-bottom: 1.6rem; line-height: 1.5; }
+.plano-items { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+.plano-items li { display: flex; gap: 0.6rem; font-size: 0.86rem; line-height: 1.5; align-items: flex-start; }
+.plano-items li::before { content: '✓'; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+.plano-card:not(.featured) .plano-items li::before { color: var(--teal-500); }
+.plano-card.featured .plano-items li::before { color: var(--teal-100); }
+.plano-card:not(.featured) .plano-items li { color: var(--gray-700); }
+.plano-btn {
+  width: 100%; margin-top: 1.8rem; padding: 0.85rem;
+  border-radius: 100px; font-family: 'DM Sans'; font-size: 0.9rem;
+  font-weight: 500; cursor: pointer; border: none; transition: all 0.2s;
+}
+.plano-card:not(.featured) .plano-btn { background: var(--teal-50); color: var(--teal-700); }
+.plano-card:not(.featured) .plano-btn:hover { background: var(--teal-100); }
+.plano-card.featured .plano-btn { background: var(--white); color: var(--teal-700); }
+.plano-card.featured .plano-btn:hover { background: var(--teal-50); }
+
+/* ─── CADASTRO ─── */
+.cadastro-section { padding: 7rem 5vw; background: var(--gray-50); }
+.cadastro-inner {
+  display: grid; grid-template-columns: 1fr 1.1fr;
+  gap: 6vw; align-items: start; max-width: 1100px; margin: 0 auto;
+}
+.form-card {
+  background: var(--white); border-radius: 24px;
+  padding: 2.5rem; box-shadow: 0 8px 40px rgba(0,0,0,0.05);
+  border: 1px solid var(--gray-100);
+}
+.form-card h3 { font-size: 1.5rem; margin-bottom: 0.4rem; }
+.form-card > p { font-size: 0.88rem; color: var(--gray-500); margin-bottom: 2rem; line-height: 1.6; }
+.form-group { margin-bottom: 1.1rem; }
+.form-group label { display: block; font-size: 0.78rem; font-weight: 500; color: var(--gray-700); margin-bottom: 0.4rem; }
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%; padding: 0.75rem 1rem;
+  border: 1.5px solid var(--gray-300); border-radius: 12px;
+  font-family: 'DM Sans'; font-size: 0.9rem; color: var(--gray-900);
+  background: var(--white); transition: border-color 0.2s; outline: none;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--teal-500); }
+.form-group textarea { min-height: 85px; resize: vertical; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+.form-submit {
+  width: 100%; padding: 1rem; border-radius: 100px;
+  background: var(--teal-700); color: var(--white); border: none;
+  font-family: 'DM Sans'; font-size: 0.95rem; font-weight: 500;
+  cursor: pointer; transition: all 0.25s; margin-top: 0.4rem;
+}
+.form-submit:hover { background: var(--teal-800); transform: translateY(-1px); }
+.form-submit:disabled { background: var(--gray-300); cursor: not-allowed; transform: none; }
+.form-status { margin-top: 1rem; padding: 0.8rem 1rem; border-radius: 12px; font-size: 0.84rem; display: none; }
+.form-status.success { background: var(--teal-50); color: var(--teal-700); border: 1px solid var(--teal-100); display: block; }
+.form-status.offline { background: var(--amber-50); color: var(--amber-600); border: 1px solid #f5c28a; display: block; }
+.sync-badge { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.72rem; color: var(--gray-500); margin-top: 0.8rem; font-family: 'DM Mono'; }
+.sync-dot { width: 6px; height: 6px; border-radius: 50%; }
+.sync-dot.online { background: #10b981; }
+.sync-dot.offline { background: var(--amber-200); }
+.qr-block { padding-top: 2rem; }
+.qr-block .section-label { margin-bottom: 1rem; }
+.qr-block h3 { font-size: 1.8rem; margin-bottom: 0.8rem; }
+.qr-block p { font-size: 0.95rem; color: var(--gray-500); line-height: 1.75; margin-bottom: 2rem; }
+.qr-card-simple {
+  background: var(--white); border-radius: 18px;
+  border: 1.5px dashed var(--gray-300); padding: 1.8rem;
+  text-align: center; display: inline-block; width: 100%; max-width: 260px;
+}
+.qr-placeholder {
+  width: 140px; height: 140px; margin: 0 auto 1rem;
+  background: var(--gray-50); border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px dashed var(--gray-300); font-size: 0.72rem;
+  color: var(--gray-400); flex-direction: column; gap: 0.4rem;
+}
+.qr-card-simple h4 { font-size: 1.1rem; margin-bottom: 0.2rem; }
+.qr-card-simple p { font-size: 0.75rem; color: var(--gray-500); }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--gray-900); color: rgba(255,255,255,0.45);
+  padding: 3rem 5vw;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 1rem;
+}
+footer .logo { font-family: 'Cormorant Garamond'; font-size: 1.4rem; color: var(--white); }
+footer p { font-size: 0.78rem; }
+
+/* ─── FADE-UP ─── */
+.fade-up { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* ─── MOBILE ─── */
+@media (max-width: 768px) {
+  nav { padding: 1rem 5vw; }
+  .nav-links { display: none; }
+  .nav-mobile-toggle { display: block; }
+  .nav-links.open {
+    display: flex; flex-direction: column; position: fixed;
+    top: 64px; left: 0; right: 0; background: var(--white);
+    padding: 1.5rem 5vw; border-bottom: 1px solid var(--gray-100);
+    gap: 1.2rem; align-items: flex-start; z-index: 99;
+  }
+  .hero { padding: 6rem 5vw 4rem; min-height: auto; }
+  .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .hero-sub { max-width: 100%; }
+  .hero-bg-circle { width: 280px; height: 280px; right: -60px; top: auto; bottom: 20%; transform: none; }
+  .hero-bg-dot { display: none; }
+  .dor-cards { grid-template-columns: 1fr; }
+  .especialista-section { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 5vw; }
+  .steps-desktop { display: none; }
+  .steps-mobile {
+    display: flex; overflow-x: auto; gap: 1rem;
+    padding: 0 5vw 1.5rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; -ms-overflow-style: none;
+  }
+  .steps-mobile::-webkit-scrollbar { display: none; }
+  .steps-mobile .step-card {
+    min-width: 260px; flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+  .beneficios-grid { grid-template-columns: 1fr; }
+  .planos-grid { grid-template-columns: 1fr; }
+  .cadastro-inner { grid-template-columns: 1fr; }
+  .esp-card { margin-top: 2rem; }
+  footer { flex-direction: column; text-align: center; }
+  .section-title { font-size: 2rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <span class="nav-logo-main">Respira</span>
+    <span class="nav-logo-sub">saúde</span>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="#especialista">Especialista</a>
+    <a href="#como-funciona">Como funciona</a>
+    <a href="#planos">Planos</a>
+    <a href="#cadastro" class="nav-cta">Agendar consulta</a>
+  </div>
+  <button class="nav-mobile-toggle" id="navToggle" aria-label="Menu">
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+      <rect y="4" width="22" height="1.8" rx="1" fill="#3a3a3a"/>
+      <rect y="10" width="22" height="1.8" rx="1" fill="#3a3a3a"/>
+      <rect y="16" width="22" height="1.8" rx="1" fill="#3a3a3a"/>
+    </svg>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-circle"></div>
+  <div class="hero-bg-dot"></div>
+  <div class="hero-inner">
+    <div class="fade-up">
+      <div class="hero-eyebrow">
+        <span class="hero-eyebrow-dot"></span>
+        Alergia · Asma · Bronquite
+      </div>
+      <h1 class="hero-title">
+        O seu filho merece<br>
+        respirar <em>sem crise.</em>
+      </h1>
+      <p class="hero-sub">
+        Atendimento especializado em saúde pulmonar e imunológica — para crianças e adultos. Com a Dra. Mônica Ribeiro, protocolo contínuo e acompanhamento real.
+      </p>
+      <div class="hero-actions">
+        <a href="#cadastro" class="btn-primary">Quero agendar →</a>
+        <a href="#como-funciona" class="btn-ghost">Como funciona ↓</a>
+      </div>
+      <div class="hero-trust">
+        <div class="hero-trust-avatars">
+          <span>DL</span><span>JR</span><span>MS</span>
+        </div>
+        <span>Famílias acompanhadas com protocolo da Dra. Mônica</span>
+      </div>
+    </div>
+
+    <div class="fade-up" style="transition-delay:0.2s">
+      <div class="hero-card">
+        <div class="hero-card-tag">
+          <span class="tag-live-dot"></span> Agendamento disponível hoje
+        </div>
+        <div class="dr-badge">
+          <div class="dr-avatar">MR</div>
+          <div class="dr-info">
+            <h3>Dra. Mônica Ribeiro</h3>
+            <p>Alergologia & Imunologia</p>
+            <span>São Gonçalo · CRM 52.51435-8</span>
+          </div>
+        </div>
+        <div class="card-stats">
+          <div class="stat-box"><div class="n">4.0</div><div class="l">nota Google</div></div>
+          <div class="stat-box"><div class="n">31+</div><div class="l">avaliações</div></div>
+          <div class="stat-box"><div class="n">R$10</div><div class="l">aplicação vacina</div></div>
+        </div>
+        <div class="chat-wrap">
+          <div class="chat-msg user"><div class="bubble">Meu filho tem bronquite frequente…</div></div>
+          <div class="chat-msg bot">
+            <div class="bot-av">R</div>
+            <div class="bubble">Entendemos. Vamos organizar o histórico antes da consulta. Qual a idade dele?</div>
+          </div>
+          <div class="chat-msg bot">
+            <div class="bot-av">R</div>
+            <div class="bubble typing"><span></span><span></span><span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOR / ACOLHIMENTO -->
+<section class="dor-section">
+  <div class="dor-inner fade-up">
+    <span class="section-label">Você já passou por isso</span>
+    <h2 class="dor-title">Noite na UPA.<br>Filho com <em>falta de ar.</em><br>Sem conseguir marcar consulta.</h2>
+    <p class="dor-sub">Esse ciclo não precisa continuar. Com o tratamento certo, crises de asma e bronquite podem ser prevenidas — não só tratadas na emergência.</p>
+    <div class="dor-cards">
+      <div class="dor-card">
+        <div class="dor-card-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#5DCAA5" stroke-width="1.5" stroke-linecap="round">
+            <path d="M14 4C9 4 5 8 5 13c0 3 1.5 5.5 4 7l1 4h8l1-4c2.5-1.5 4-4 4-7 0-5-4-9-9-9z"/>
+            <path d="M11 13h6M14 10v6"/>
+          </svg>
+        </div>
+        <h4>Crises que se repetem</h4>
+        <p>Seu filho vai à emergência, melhora, volta pra casa. E em semanas a crise volta. Isso tem solução.</p>
+      </div>
+      <div class="dor-card">
+        <div class="dor-card-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#5DCAA5" stroke-width="1.5" stroke-linecap="round">
+            <rect x="5" y="5" width="18" height="18" rx="3"/>
+            <path d="M9 14h10M14 9v10"/>
+          </svg>
+        </div>
+        <h4>Dificuldade de agendar</h4>
+        <p>Telefone que não atende. Agenda lotada por meses. Quando consegue, a crise já passou — mas voltará.</p>
+      </div>
+      <div class="dor-card">
+        <div class="dor-card-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#5DCAA5" stroke-width="1.5" stroke-linecap="round">
+            <circle cx="14" cy="14" r="9"/>
+            <path d="M14 10v4l3 3"/>
+          </svg>
+        </div>
+        <h4>Tratamento sem continuidade</h4>
+        <p>Cada médico prescreve diferente. Sem histórico, sem protocolo, sem acompanhamento real ao longo do tempo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESPECIALISTA -->
+<section id="especialista">
+  <div class="especialista-section">
+    <div class="esp-left fade-up">
+      <span class="section-label">Especialista referência</span>
+      <h2 class="section-title">Uma médica que<br><em>conhece esse problema</em><br>por dentro.</h2>
+      <p class="section-sub" style="margin-bottom:1.8rem">
+        A Dra. Mônica Ribeiro de Oliveira já atendeu em UPA. Ela conhece o que as famílias enfrentam — e construiu um protocolo de imunoterapia que trata a causa, não só os sintomas.
+      </p>
+      <div class="esp-quote">
+        "Especialista de verdade em Alergia e Imunologia tem RQE — Registro de Qualificação de Especialista."
+      </div>
+    </div>
+    <div class="esp-card fade-up" style="transition-delay:0.15s">
+      <div class="esp-avatar">MR</div>
+      <h3>Dra. Mônica Ribeiro de Oliveira</h3>
+      <div class="esp-crm">CRM RJ 514358 · RQE 12160 · RQE 18103</div>
+      <div class="esp-stars">★★★★☆</div>
+      <div class="esp-review">4.0 · 31 avaliações Google · 20 avaliações Doctoralia</div>
+      <div class="esp-tags">
+        <span class="esp-tag">Alergologia</span>
+        <span class="esp-tag">Imunologia</span>
+        <span class="esp-tag">Imunoterapia</span>
+        <span class="esp-tag">Asma</span>
+        <span class="esp-tag">Rinite</span>
+        <span class="esp-tag">Bronquite</span>
+      </div>
+      <div class="esp-awards">
+        <span class="esp-award">ALERGORIO 2025</span>
+        <span class="esp-award">Congresso Brasileiro de Alergia 2023</span>
+        <span class="esp-award">São Gonçalo · RJ</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="como-section" id="como-funciona">
+  <div class="como-header fade-up">
+    <span class="section-label">Como funciona</span>
+    <h2 class="section-title">Do primeiro contato ao<br><em>tratamento contínuo</em></h2>
+    <p class="section-sub">Sem fila de convênio. Sem burocracia. Você entra com o problema — a gente organiza tudo.</p>
+  </div>
+
+  <!-- Desktop -->
+  <div class="steps-desktop">
+    <div class="step-card fade-up">
+      <div class="step-num">01</div>
+      <div class="ico-wrap">
+        <svg class="ico" viewBox="0 0 40 40" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round">
+          <rect x="10" y="6" width="20" height="28" rx="3"/>
+          <path d="M15 13h10M15 18h10M15 23h6"/>
+          <circle cx="28" cy="30" r="5" fill="#E1F5EE" stroke="#0F6E56"/>
+          <path d="M26 30l1.5 1.5L30 28"/>
+        </svg>
+      </div>
+      <h3>Você se cadastra</h3>
+      <p>QR code ou acesso direto. Descreve o problema. Sem cartão de crédito. Sem burocracia.</p>
+    </div>
+    <div class="step-card fade-up" style="transition-delay:0.1s">
+      <div class="step-num">02</div>
+      <div class="ico-wrap">
+        <svg class="ico" viewBox="0 0 40 40" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round">
+          <path d="M20 8c-6.6 0-12 4.5-12 10 0 3 1.5 5.7 4 7.5V30h16v-4.5c2.5-1.8 4-4.5 4-7.5 0-5.5-5.4-10-12-10z"/>
+          <path d="M16 20c1 1.5 5.5 1.5 8 0"/>
+          <path d="M17 16h.5M22.5 16h.5"/>
+        </svg>
+      </div>
+      <h3>Histórico organizado</h3>
+      <p>Sua queixa e histórico chegam estruturados à Dra. Mônica antes da consulta. Sem repetir tudo do zero.</p>
+    </div>
+    <div class="step-card fade-up" style="transition-delay:0.2s">
+      <div class="step-num">03</div>
+      <div class="ico-wrap">
+        <svg class="ico" viewBox="0 0 40 40" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round">
+          <circle cx="20" cy="14" r="6"/>
+          <path d="M8 34c0-6.6 5.4-12 12-12s12 5.4 12 12"/>
+          <path d="M28 22l2 2-4 4"/>
+        </svg>
+      </div>
+      <h3>Consulta especializada</h3>
+      <p>Dra. Mônica realiza a consulta — presencial ou por telemedicina, conforme seu plano.</p>
+    </div>
+    <div class="step-card fade-up" style="transition-delay:0.3s">
+      <div class="step-num">04</div>
+      <div class="ico-wrap">
+        <svg class="ico" viewBox="0 0 40 40" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round">
+          <path d="M20 8c-5 0-9 3.5-9 8 0 3 1.8 5.5 4.5 7l.5 2h8l.5-2C27.2 21.5 29 19 29 16c0-4.5-4-8-9-8z"/>
+          <path d="M17 28v4M23 28v4M15 32h10"/>
+          <path d="M17 16l2 2 4-4"/>
+        </svg>
+      </div>
+      <h3>Acompanhamento real</h3>
+      <p>Vacinas semanais na farmácia de bairro. Retornos por teleconsulta. Diário de sintomas. Evolução monitorada.</p>
+    </div>
+  </div>
+
+  <!-- Mobile carousel -->
+  <div class="steps-mobile">
+    <div class="step-card">
+      <div class="step-num">01</div>
+      <div class="ico-wrap">
+        <svg class="ico" viewBox="0 0 40 40" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round">
+          <rect x="10" y="6" width="20" height="28" rx="3"/>
+          <path d="M15 13h10M15 18h10M15 23h6"/>
+        </svg>
+      </div>
+      <h3>Você se cadastra</h3>
+      <p>QR code ou acesso direto. Descreve o problema. Sem cartão de crédito.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">02</div>
+      <div class="ico-wrap">
+        <svg class="ico" viewBox="0 0 40 40" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round">
+          <path d="M20 8c-6.6 0-12 4.5-12 10 0 3 1.5 5.7 4 7.5V30h16v-4.5c2.5-1.8 4-4.5 4-7.5 0-5.5-5.4-10-12-10z"/>
+        </svg>
+      </div>
+      <h3>Histórico organizado</h3>
+      <p>Sua queixa chega estruturada à médica antes da consulta.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">03</div>
+      <div class="ico-wrap">
+        <svg class="ico" viewBox="0 0 40 40" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round">
+          <circle cx="20" cy="14" r="6"/>
+          <path d="M8 34c0-6.6 5.4-12 12-12s12 5.4 12 12"/>
+        </svg>
+      </div>
+      <h3>Consulta especializada</h3>
+      <p>Presencial ou telemedicina com a Dra. Mônica.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">04</div>
+      <div class="ico-wrap">
+        <svg class="ico" viewBox="0 0 40 40" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round">
+          <path d="M20 8c-5 0-9 3.5-9 8 0 3 1.8 5.5 4.5 7l.5 2h8l.5-2C27.2 21.5 29 19 29 16c0-4.5-4-8-9-8z"/>
+          <path d="M17 28v4M23 28v4M15 32h10"/>
+        </svg>
+      </div>
+      <h3>Acompanhamento real</h3>
+      <p>Vacinas semanais na farmácia de bairro. Diário de sintomas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFÍCIOS -->
+<section>
+  <div class="beneficios-section">
+    <div class="section-header fade-up">
+      <span class="section-label">Por que o Respira</span>
+      <h2 class="section-title">Tratamento que<br><em>acompanha sua família</em></h2>
+    </div>
+    <div class="beneficios-grid">
+      <div class="beneficio-item fade-up">
+        <div class="beneficio-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round">
+            <path d="M11 2C6 2 2 6 2 11s4 9 9 9 9-4 9-9-4-9-9-9z"/>
+            <path d="M7 11l3 3 5-5"/>
+          </svg>
+        </div>
+        <div>
+          <h4>Sem fila de convênio</h4>
+          <p>Agendamento direto. Sem ligar 30 vezes. Sem esperar meses.</p>
+        </div>
+      </div>
+      <div class="beneficio-item fade-up" style="transition-delay:0.1s">
+        <div class="beneficio-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round">
+            <rect x="3" y="3" width="16" height="16" rx="3"/>
+            <path d="M7 11h8M11 7v8"/>
+          </svg>
+        </div>
+        <div>
+          <h4>Imunoterapia acessível</h4>
+          <p>Vacina semanal aplicada na farmácia de bairro por R$10. Sem precisar ir ao consultório toda semana.</p>
+        </div>
+      </div>
+      <div class="beneficio-item fade-up" style="transition-delay:0.15s">
+        <div class="beneficio-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round">
+            <path d="M11 2l2 6h6l-5 4 2 6-5-4-5 4 2-6-5-4h6z"/>
+          </svg>
+        </div>
+        <div>
+          <h4>Especialista com RQE</h4>
+          <p>A Dra. Mônica tem Registro de Qualificação de Especialista — a certificação mais exigente da medicina.</p>
+        </div>
+      </div>
+      <div class="beneficio-item fade-up" style="transition-delay:0.2s">
+        <div class="beneficio-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round">
+            <path d="M3 11c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8-8-3.6-8-8z"/>
+            <path d="M11 7v4l3 3"/>
+          </svg>
+        </div>
+        <div>
+          <h4>Acompanhamento contínuo</h4>
+          <p>Não é só consulta. É protocolo, diário de sintomas, retorno e evolução monitorada ao longo do tempo.</p>
+        </div>
+      </div>
+      <div class="beneficio-item fade-up" style="transition-delay:0.25s">
+        <div class="beneficio-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round">
+            <path d="M2 11l5-5 4 4 4-4 5 5"/>
+            <path d="M2 16l5-5 4 4 4-4 5 5"/>
+          </svg>
+        </div>
+        <div>
+          <h4>Mensalidade que cabe no bolso</h4>
+          <p>Tratamento completo diluído em planos mensais acessíveis. Sem pagar R$250 de uma vez.</p>
+        </div>
+      </div>
+      <div class="beneficio-item fade-up" style="transition-delay:0.3s">
+        <div class="beneficio-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round">
+            <path d="M11 3C7 3 4 6 4 10c0 5 7 11 7 11s7-6 7-11c0-4-3-7-7-7z"/>
+            <circle cx="11" cy="10" r="2.5"/>
+          </svg>
+        </div>
+        <div>
+          <h4>São Gonçalo e região</h4>
+          <p>Atendimento presencial em São Gonçalo. Telemedicina para toda a Baixada Fluminense e Grande Rio.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA CENTRAL -->
+<section class="cta-section">
+  <div class="fade-up">
+    <span class="section-label">Comece hoje</span>
+    <h2 class="cta-title">Seu filho pode respirar<br><em>sem depender de emergência.</em></h2>
+    <p class="cta-sub">Cadastre-se agora. Sem cartão de crédito. Sem burocracia.</p>
+    <a href="#cadastro" class="btn-white">Agendar primeira consulta →</a>
+    <p class="cta-note">Atendimento presencial em São Gonçalo · Telemedicina para toda a região</p>
+  </div>
+</section>
+
+<!-- PLANOS -->
+<section class="planos-section" id="planos">
+  <div class="section-header fade-up">
+    <span class="section-label">Planos</span>
+    <h2 class="section-title">Tratamento completo diluído<br>em <em>mensalidades acessíveis</em></h2>
+    <p class="section-sub">Sem pagar R$250 de uma vez. O plano cobre toda a jornada — da consulta à imunoterapia.</p>
+  </div>
+  <div class="planos-grid">
+    <div class="plano-card fade-up">
+      <div class="plano-badge">Controle</div>
+      <div class="plano-preco">
+        <span class="plano-moeda">R$</span><span class="plano-valor">89</span><span class="plano-per">/mês</span>
+      </div>
+      <div class="plano-nome">Essencial</div>
+      <div class="plano-desc">Para monitorar e ter apoio contínuo.</div>
+      <ul class="plano-items">
+        <li>1 teleconsulta por mês</li>
+        <li>Diário digital de sintomas</li>
+        <li>Plano de ação para crises</li>
+        <li>Suporte por mensagem</li>
+      </ul>
+      <button class="plano-btn" onclick="document.getElementById('cadastro').scrollIntoView({behavior:'smooth'})">Começar</button>
+    </div>
+    <div class="plano-card featured fade-up" style="transition-delay:0.1s">
+      <div class="plano-badge">⭐ Mais escolhido</div>
+      <div class="plano-preco">
+        <span class="plano-moeda">R$</span><span class="plano-valor">149</span><span class="plano-per">/mês</span>
+      </div>
+      <div class="plano-nome">Família</div>
+      <div class="plano-desc">Para famílias com criança em tratamento.</div>
+      <ul class="plano-items">
+        <li>2 teleconsultas por mês</li>
+        <li>1 consulta presencial trimestral</li>
+        <li>Diário digital de sintomas</li>
+        <li>Plano de ação escrito</li>
+        <li>Suporte via WhatsApp</li>
+      </ul>
+      <button class="plano-btn" onclick="document.getElementById('cadastro').scrollIntoView({behavior:'smooth'})">Começar</button>
+    </div>
+    <div class="plano-card fade-up" style="transition-delay:0.2s">
+      <div class="plano-badge">Completo</div>
+      <div class="plano-preco">
+        <span class="plano-moeda">R$</span><span class="plano-valor">219</span><span class="plano-per">/mês</span>
+      </div>
+      <div class="plano-nome">Imunoterapia</div>
+      <div class="plano-desc">Tratamento completo com a vacina.</div>
+      <ul class="plano-items">
+        <li>Teleconsultas ilimitadas</li>
+        <li>1 consulta presencial/mês</li>
+        <li>Imunoterapia (vacina) inclusa</li>
+        <li>Acompanhamento de doses</li>
+        <li>Relatório mensal de evolução</li>
+      </ul>
+      <button class="plano-btn" onclick="document.getElementById('cadastro').scrollIntoView({behavior:'smooth'})">Começar</button>
+    </div>
+  </div>
+</section>
+
+<!-- CADASTRO -->
+<section class="cadastro-section" id="cadastro">
+  <div class="cadastro-inner">
+    <div class="qr-block fade-up">
+      <span class="section-label">Primeiro contato</span>
+      <h2 class="section-title" style="font-size:clamp(1.8rem,3vw,2.6rem)">Comece hoje.<br><em>Sem fricção.</em></h2>
+      <p>Preencha ao lado e nossa equipe entra em contato para organizar o primeiro atendimento com a Dra. Mônica.</p>
+      <div class="qr-card-simple">
+        <div class="qr-placeholder">
+          <span style="font-size:1.8rem">⬜</span>
+          <span>QR Code</span>
+        </div>
+        <h4 style="font-family:'Cormorant Garamond';font-size:1.1rem">Respira · Saúde</h4>
+        <p>Aponte a câmera e cadastre agora</p>
+      </div>
+    </div>
+
+    <div class="form-card fade-up" style="transition-delay:0.15s">
+      <h3 class="serif" style="font-family:'Cormorant Garamond'">Agendar consulta</h3>
+      <p>Nossa equipe organiza tudo antes do atendimento.</p>
+      <form id="respiraForm">
+        <div class="form-group">
+          <label>Nome completo</label>
+          <input type="text" id="f-nome" placeholder="Seu nome" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>WhatsApp</label>
+            <input type="tel" id="f-phone" placeholder="(21) 9 ..." required>
+          </div>
+          <div class="form-group">
+            <label>Idade do paciente</label>
+            <input type="text" id="f-idade" placeholder="Ex: 7 anos">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Principal queixa</label>
+          <select id="f-queixa">
+            <option value="">Selecione...</option>
+            <option>Bronquite / asma na criança</option>
+            <option>Rinite alérgica</option>
+            <option>Alergia respiratória no adulto</option>
+            <option>Imunoterapia (vacina)</option>
+            <option>Outro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Conte mais (opcional)</label>
+          <textarea id="f-msg" placeholder="Ex: meu filho tem crises frequentes, já foi à emergência 3 vezes..."></textarea>
+        </div>
+        <button type="submit" class="form-submit" id="submitBtn">Quero ser atendido →</button>
+        <div class="form-status" id="formStatus"></div>
+        <div class="sync-badge" id="syncBadge">
+          <span class="sync-dot online" id="syncDot"></span>
+          <span id="syncText">Conectado · dados enviados com segurança</span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo">Respira</div>
+  <p>Saúde Pulmonar & Imunológica · São Gonçalo — RJ</p>
+  <p>respira.saude · (21) 99887-7336</p>
+</footer>
+
+<script>
+// ─── MENU MOBILE ───
+document.getElementById('navToggle').addEventListener('click', function() {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+
+// ─── OFFLINE-FIRST ───
+const GMOS_ENDPOINT = 'https://plataforma-gm-os.vercel.app/api/q5/lead';
+const QUEUE_KEY = 'respira_queue';
+function getQueue() { try { return JSON.parse(localStorage.getItem(QUEUE_KEY)||'[]'); } catch { return []; } }
+function saveQueue(q) { localStorage.setItem(QUEUE_KEY, JSON.stringify(q)); }
+function addToQueue(data) {
+  const q = getQueue();
+  q.push({ ...data, timestamp: new Date().toISOString(), synced: false });
+  saveQueue(q);
+}
+async function trySyncQueue() {
+  const q = getQueue(); if (!q.length) return;
+  const updated = [];
+  for (const item of q) {
+    if (item.synced) { updated.push(item); continue; }
+    try {
+      const r = await fetch(GMOS_ENDPOINT, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(item) });
+      updated.push({ ...item, synced: r.ok });
+    } catch { updated.push(item); }
+  }
+  saveQueue(updated);
+}
+function updateSyncStatus(online) {
+  const dot = document.getElementById('syncDot');
+  const txt = document.getElementById('syncText');
+  dot.className = 'sync-dot ' + (online ? 'online' : 'offline');
+  txt.textContent = online ? 'Conectado · dados enviados com segurança' : 'Offline · dados salvos · sincroniza quando reconectar';
+  if (online) trySyncQueue();
+}
+window.addEventListener('online', () => updateSyncStatus(true));
+window.addEventListener('offline', () => updateSyncStatus(false));
+updateSyncStatus(navigator.onLine);
+
+// ─── FORMULÁRIO ───
+document.getElementById('respiraForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  const status = document.getElementById('formStatus');
+  btn.disabled = true; btn.textContent = 'Enviando...';
+  const payload = {
+    nome: document.getElementById('f-nome').value,
+    telefone: document.getElementById('f-phone').value,
+    idade: document.getElementById('f-idade').value,
+    queixa: document.getElementById('f-queixa').value,
+    mensagem: document.getElementById('f-msg').value,
+    origem: 'site_respira_v2'
+  };
+  addToQueue(payload);
+  let enviado = false;
+  if (navigator.onLine) {
+    try {
+      const r = await fetch(GMOS_ENDPOINT, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) });
+      enviado = r.ok;
+      if (enviado) saveQueue(getQueue().map(i => i.telefone===payload.telefone && !i.synced ? {...i,synced:true} : i));
+    } catch {}
+  }
+  status.className = 'form-status ' + (enviado ? 'success' : 'offline');
+  status.textContent = enviado
+    ? '✓ Recebemos seu contato! A equipe vai te chamar em breve.'
+    : '📥 Dados salvos. Você será contatado assim que estivermos online.';
+  btn.disabled = false; btn.textContent = 'Enviado ✓';
+  this.reset();
+});
+
+// ─── ANIMAÇÕES ───
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ─── SYNC PERIÓDICO ───
+setInterval(trySyncQueue, 30000);
+</script>
+</body>
+</html>
